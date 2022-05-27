@@ -2,19 +2,32 @@
 {% block content %} 
 {{ block.super}}
 <h1 class='text-center'>Gallery Booth</h1>
-
+  <hr> 
+<div class='container-fluid'>
 {% for Image in Images %}
-  <hr>
-    <div class="row">
-       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <h2 class="text-center"> {{ Image.image_name }} </h2>
-        <h5 class="text-center"> {{ Image.post_date |date:"l  d, F Y"}} </h5>
-      </div>
-     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <img src="{{image.image}}" class="img-responsive" alt="Image">
+  <div class="col-md-3 single_portfolio_text">
+        <img src="{{Image.Image.url}}" class="img-responsive" alt="Image">
+
+        <div class="portfolio_images_overlay text-center">
+            <h3 class="text-white">{{ Image.image_name }}</h3>
+            <h5 class="text-white">Location: {{Image.location_name}}</h5>   
+            <h6 class="text-center"> {{ Image.post_date |date:"l  d, F Y"}} </h6>
+            <hr>
+            <p class="text-white">{{Image.image_descriptions}}</p>
+
+            {% comment %} <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{Image.Image.url}}"
+                    class="hidden"> {% endcomment %}
+
+            <div class="top">
+                    <button class="btn btn-success" onclick="CopyFunction()">Copy Link</button>
+
+                    <a class="fancybox btn btn-custom" rel="gallery" href="{{photo.photo.url}}">View Image</a>
+           </div>
       </div>  
-    </div> <br>
+      <br>
   {% endfor %}
+  </div>
+
 </div>
 {% comment %} {{Images}} {% endcomment %}
 {% endblock %}
