@@ -3,4 +3,18 @@
 {{ block.super}}
 <h1>Welcome Home</h1>
 
+{% for Image in Images %}
+  <hr>
+    <div class="row">
+       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <h2 class="text-center"> {{ Image.image_name }} </h2>
+        <h5 class="text-center"> {{ Image.post_date }} </h5>
+      </div>
+     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <img src="{{image.image}}" class="img-responsive" alt="Image">
+      </div>  
+    </div> <br>
+  {% endfor %}
+</div>
+{% comment %} {{Images}} {% endcomment %}
 {% endblock %}
