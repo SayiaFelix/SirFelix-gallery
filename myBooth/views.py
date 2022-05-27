@@ -13,4 +13,16 @@ def my_gallery(request):
     return render(request, 'gallery.html', {"date": date, "Images": Images,"locations":locations})
 
 
+def search_results(request):
+    if 'search' in request.GET and request.GET["search"]:
+        category = request.GET.get("search")
+        searched_photos = Image.search_photo_by_category(category)
+        locations = Location.objects.all()
+        message = f"{category}"
+
+        return render(request, 'search.html', {"message":message, "Images":searched_photos, "locations":locations })
+
+    else:
+        message = "You haven't searched for anything!!"
+        return render(request, 'search.html', {"message":message})
 
