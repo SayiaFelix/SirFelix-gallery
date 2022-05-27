@@ -1,12 +1,22 @@
 {%extends 'base.html'%}
 {% block content %} 
 {{ block.super}}
+
+<script>
+    function CopyFunction() {
+        let copyText = document.getElementById("imagelink");
+        copyText.select();
+        document.execCommand("copy");
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
+
 <h1 class='text-center'>Gallery Booth</h1>
   <hr> 
 <div class='container-fluid'>
 {% for Image in Images %}
   <div class="col-md-3 single_portfolio_text">
-        <img src="{{Image.Image.url}}" class="img-responsive" alt="Image">
+        <img src="{{Image.image.url}}" class="img-responsive" alt="Image">
 
         <div class="portfolio_images_overlay text-center">
             <h3 class="text-white">{{ Image.image_name }}</h3>
@@ -21,7 +31,7 @@
             <div class="top">
                     <button class="btn btn-success" onclick="CopyFunction()">Copy Link</button>
 
-                    <a class="fancybox btn btn-custom" rel="gallery" href="{{photo.photo.url}}">View Image</a>
+                    <a class="fancybox btn btn-custom" rel="gallery" href="{{Image.image.url}}">View Image</a>
            </div>
       </div>  
       <br>
