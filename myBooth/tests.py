@@ -2,7 +2,6 @@ from django.test import TestCase
 from .models import Location, category, Image
 
 # Create your tests here.
-
 class ImageTestClass(TestCase):
     '''
     Test case for the bahaviours in the image model

@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from django.utils import timezone
 
 # Create your models here.
 class Location(models.Model):
@@ -45,7 +46,7 @@ class Image(models.Model):
     image_descriptions = models.TextField()
     location_name = models.ForeignKey(Location, on_delete=models.CASCADE)
     category_name = models.ManyToManyField(category)
-    post_date = models.DateTimeField(auto_now_add=True)
+    post_date = models.DateTimeField(default=timezone.now)
     image = models.ImageField(upload_to = 'photos/',null=True)
 
     def __str__(self):
