@@ -50,3 +50,43 @@ class LocationTestClass(TestCase):
         locations = Location.objects.all()
         self.assertTrue(len(locations), 2)
 
+class ImageTestClass(TestCase):
+    '''
+    Test case for the bahaviours in the image model
+    '''
+    # Set up method
+    def setUp(self):
+        # Creating a new location and saving it
+        self.mombasa = Location(location='Mombasa')
+        self.mombasa.save_location()
+
+        # Creating a new category and saving it
+        self.new_category = category(category='fun')
+        self.new_category.save_category()
+
+        self.new_image = Image(image_name = 'Miami Vibe', image_descriptions = 'I visit Miami once every year', location_name = self.mombasa)
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_image, Image))
+
+    def test_save_method(self):
+        self.new_image.save_photo()
+        image = Image.objects.all()
+        self.assertTrue(len(image) > 0)
+
+    def test_delete_method(self):
+        Image.delete_photo(self.new_image.id)
+        image = Image.objects.all()
+        self.assertTrue(len(image) == 0)
+
+    def test_get_image_by_id(self):
+        self.new_image.save_photo()
+        image = Image.get_photo_by_id(self.new_image.id)
+        self.assertNotEqual(self.new_image, image)
+
+    def test_search_photo_by_category(self):
+        images = Image.search_photo_by_category("fun")
+        self.assertFalse(len(images) > 0)
+
+    def test_filter_by_location(self):
+        pass
