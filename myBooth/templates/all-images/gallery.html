@@ -1,4 +1,4 @@
-{%extends 'base.html'%}
+{%extends 'all-images/base.html'%}
 {% block content %} 
 {{ block.super}}
 
@@ -20,8 +20,8 @@
        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <h2 class="text-center"> {{ Image.image_name }} </h2>
         <h5 class="text-center"> {{ Image.post_date |date:"l  d, F Y"}} </h5> 
-        {% comment %} <h5 class="text-white">Location: {{ Image.location_name }}</h5>   
-         <p class="text-white">{{Image.image_descriptions}}</p> {% endcomment %}
+         {% comment %} <h5 class="text-white">Location: {{ Image.location_name }}</h5>   
+         <p class="text-white lead">{{Image.image_descriptions}}</p>  {% endcomment %}
          <div class="top text-center">
                     <button class="btn btn-success" onclick="CopyFunction()">Copy Link</button>
                     <a class="fancybox btn btn-custom" rel="gallery" href="{{Image.image.url}}">View Image</a>
@@ -31,7 +31,7 @@
       </div> 
      
       <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <img src="{{ Image.image.url }}" class="img-responsive" alt="Image">
+        <img src="{{ Image.image.url }}" class="img-responsive rounded float-start" alt="Image">
       </div>  
     </div> <br>
  

@@ -4,13 +4,15 @@ from django.utils import timezone
 
 # Create your models here.
 class Location(models.Model):
-    location = models.CharField(max_length=120)
+    id = models.AutoField(primary_key=True)
+    location_name = models.CharField(max_length=30,null=True)
 
     def __str__(self):
         '''
         A string representation
         '''
-        return self.location
+        return self.location_name
+        
 
     def save_location(self):
         '''
@@ -23,13 +25,14 @@ class Location(models.Model):
         return cls.objects.filter(id = id).delete()
 
 class category(models.Model):
-    category = models.CharField(max_length=60)
+    id = models.AutoField(primary_key=True)
+    category_name = models.CharField(max_length=30,null=True)
 
     def __str__(self):
         '''
         String representation
         '''
-        return self.category
+        return self.category_name
 
     def save_category(self):
         '''
@@ -42,12 +45,13 @@ class Image(models.Model):
     '''
     A class that determines the image model characteristics
     '''
+    id = models.AutoField(primary_key=True)
     image_name = models.CharField(max_length=30)
     image_descriptions = models.TextField()
-    location_name = models.ForeignKey(Location, on_delete=models.CASCADE)
-    category_name = models.ManyToManyField(category)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    category = models.ManyToManyField(category)
     post_date = models.DateTimeField(default=timezone.now)
-    image = models.ImageField(upload_to = 'photos/',null=True)
+    image = models.ImageField(upload_to = 'images/',null=True)
 
     def __str__(self):
         '''
@@ -82,12 +86,18 @@ class Image(models.Model):
         '''
         return cls.objects.filter(id = id).all()
 
+
+    @classmethod
+    def search_by_title(cls,search_term):
+        Images = cls.objects.filter(image_name__icontains = search_term)
+        return Images
+
     @classmethod
     def search_photo_by_category(cls, category):
         '''
         A method to return all photos that are a specific category
         '''
-        gallery = cls.objects.filter(category_name__category__icontains = category)
+        gallery = cls.objects.filter(category__category_name__icontains = category)
         return gallery
 
     @classmethod
@@ -95,6 +105,6 @@ class Image(models.Model):
         '''
         A method to filter all photos based on a location
         '''
-        locations = cls.objects.filter(location_name__location__icontains=search_term)
+        locations = cls.objects.filter(Location__location_name__icontains = search_term)
         return locations
 

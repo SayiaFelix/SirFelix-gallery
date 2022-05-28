@@ -2,6 +2,10 @@ from django.test import TestCase
 from .models import Location, category, Image
 
 # Create your tests here.
+from django.test import TestCase
+from .models import Location, category, Image
+
+# Create your tests here.
 class ImageTestClass(TestCase):
     '''
     Test case for the bahaviours in the image model
@@ -9,50 +13,52 @@ class ImageTestClass(TestCase):
     # Set up method
     def setUp(self):
         # Creating a new location and saving it
-        self.mombasa = Location(location='Mombasa')
-        self.mombasa.save_location()
+        self.miami = Location(location_name='Miami')
+        self.miami.save_location()
 
         # Creating a new category and saving it
-        self.new_category = category(category='fun')
+        self.new_category = category(category_name='fun')
         self.new_category.save_category()
 
-        self.new_image = Image(image_name = 'Miami Vibe', image_descriptions = 'I visit Miami once every year', location_name = self.mombasa)
+        self.new_image = Image(image_name = 'Miami', image_descriptions = 'Miami vibe', location = self.miami)
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_image, Image))
 
     def test_save_method(self):
         self.new_image.save_photo()
-        image = Image.objects.all()
-        self.assertTrue(len(image) > 0)
+        photos = Image.objects.all()
+        self.assertTrue(len(photos) > 0)
 
     def test_delete_method(self):
         Image.delete_photo(self.new_image.id)
-        image = Image.objects.all()
-        self.assertTrue(len(image) == 0)
+        photos = Image.objects.all()
+        self.assertTrue(len(photos) == 0)
 
     def test_get_image_by_id(self):
         self.new_image.save_photo()
-        image = Image.get_photo_by_id(self.new_image.id)
-        self.assertNotEqual(self.new_image, image)
+        photo = Image.get_photo_by_id(self.new_image.id)
+        self.assertNotEqual(self.new_image, photo)
 
     def test_search_photo_by_category(self):
-        images = Image.search_photo_by_category("fun")
-        self.assertFalse(len(images) > 0)
+        photos = Image.search_photo_by_category("food")
+        self.assertFalse(len(photos) > 0)
 
     def test_filter_by_location(self):
         pass
+
 
 class LocationTestClass(TestCase):
     '''
     Test case for the Location class and it's behaviours.
     '''
+
     # Set up method
     def setUp(self):
         '''
         Method that will run before any test case under this class
         '''
-        self.new_location = Location(location = "Mbezi")
+        self.new_location = Location(location_name = "Mbezi")
 
     def tearDown(self):
         Location.objects.all().delete()
@@ -86,10 +92,11 @@ class LocationTestClass(TestCase):
         '''
         Method to check if we can display all saved locations
         '''
-        mombasa = Location(location='Mombasa')
-        mombasa.save_location()
+        miami = Location(location_name='Miami')
+        miami.save_location()
         locations = Location.objects.all()
         self.assertTrue(len(locations), 2)
+
 
 
 class categoryTestClass(TestCase):
@@ -100,7 +107,7 @@ class categoryTestClass(TestCase):
         '''
         Creating a new instance
         '''
-        self.category = category(category = 'fun')
+        self.category = category(category_name = 'fun')
         self.category.save()
 
     def test_instance(self):

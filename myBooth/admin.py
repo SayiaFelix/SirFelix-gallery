@@ -7,9 +7,9 @@ admin.site.register(category)
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    fields=('image_name','image','post_date','category_name','location_name','image_descriptions')
-    list_display = ('image_name','location_name','image')
-    list_filter = ('post_date','category_name',)
-    search_fields = ('location_name',)
+    fields=('image_name','image','post_date','category','location','image_descriptions')
+    list_display = ('image_name','location','image')
+    list_filter = ('post_date','category',)
+    search_fields = ('location',)
     ordering = ('post_date',)
 
