@@ -88,7 +88,7 @@ class Image(models.Model):
 
 
     @classmethod
-    def search_by_title(cls,search_term):
+    def search_by_name(cls,search_term):
         Images = cls.objects.filter(image_name__icontains = search_term)
         return Images
 
