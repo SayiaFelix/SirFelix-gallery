@@ -20,14 +20,14 @@
             <h6>About:  {{image.image_descriptions}}</h6>
             <h6>Time elapsed since it was posted: <br>{{image.post_date|timesince}}</h6>
 
-            <br>
+            {% comment %} <br>
               <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
                             class="hidden"> 
-            <br>
+            <br> {% endcomment %}
             <div class="top">
                 <button type="" class="btn btn-outline-secondary btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
                 <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>    
-                <button type="button" class="btn btn-outline-danger btn-lg"> <a class="btn btn-custom fs-6" rel="gallery" href="{% url 'delete_image' image.id %}">Delete Image</a></button>   
+                {% comment %} <button type="button" class="btn btn-outline-danger btn-lg"> <a class="btn btn-custom fs-6" rel="gallery" href="{% url 'delete_image' image.id %}">Delete Image</a></button>    {% endcomment %}
             </div>   
         </div>
 

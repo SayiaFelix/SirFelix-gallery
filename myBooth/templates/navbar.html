@@ -16,8 +16,9 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {% for location in locations %}
-                        <li><a href="{% url 'get_location' location.id %}">{{location.location_name}}</a></li>
-                        <li class="divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'get_location' location.id %}">{{location.location_name}}</a></li>
+                        <li><hr class="dropdown-divider"></li>
+
                         {% endfor %}
                     </ul>
                 </li> 
