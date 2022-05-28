@@ -1,3 +1,4 @@
+from email.mime import image
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
@@ -45,8 +46,16 @@ def get_category(request, category):
     category_result = Image.objects.filter(category__category_name = category)
     return render(request,'all-images/gallery.html',{'all_images':category_result,'category_results':category_results,'location_results':location_results})
 
-def get_location(request, location_name):
-    category_results = category.objects.all()
-    locations = Location.objects.all()
-    location_result = Image.objects.filter(location__id= location_name)
-    return render(request,'all-images/locations.html',{'all_images':location_result,'category_results':category_results,'locations':locations})
+# def get_location(request, location_name):
+
+#     category_results = category.objects.all()
+#     locations = Location.objects.all()
+#     location_result = Image.objects.filter(location__id= location_name)
+#     return render(request,'all-images/locations.html',{'Images':location_result,'category_results':category_results,'locations':locations})
+
+def get_location(request, location_id ):
+    try:
+        image = Image.objects.get(id= location_id )
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"all-images/locations.html", {"image":image})
