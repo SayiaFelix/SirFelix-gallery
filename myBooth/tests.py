@@ -40,8 +40,8 @@ class ImageTestClass(TestCase):
         photo = Image.get_photo_by_id(self.new_image.id)
         self.assertNotEqual(self.new_image, photo)
 
-    def test_search_photo_by_category(self):
-        photos = Image.search_photo_by_category("food")
+    def test_search_by_category(self):
+        photos = Image.search_by_category("fun")
         self.assertFalse(len(photos) > 0)
 
     def test_filter_by_location(self):

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         {% if Images %}
-        <h3 class="text-center text-primary">Found {{ Images|length }} photo in <strong>{{message}} </strong>Categeory.</h3>
+        <h4 class="text-center text-primary">Found {{ Images|length }} photo in <em> <b>{{message}}</b> </em>Categeory.</h4>
         <hr class="text-dark" > 
         {% else %}
         <h2 class="text-center"> Found 0 photo for the search term {{message}}</h2>
@@ -19,7 +19,7 @@
         <br>
         <div class="image text-light">
               <div class="card border-secondary">
-                 <img src="{{image.image.url}}" alt="" height="550" width="440" class="img-responsive card-img-top" />
+                 <img src="{{image.image.url}}" alt="" height="500" width="420" class="img-responsive card-img-top" />
               </div>
            
             <div class="overlay text-center">

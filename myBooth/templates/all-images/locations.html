@@ -4,7 +4,44 @@
 
 <div class="container">
 
-     <div class="card">
+  <div class="card-columns">
+  
+
+ <br>
+
+   <div class="image text-light">
+         <div class="card border-secondary">
+            <img src="{{image.image.url}}" alt="" height="500" width="400" class="img-responsive card-img-top" />
+         </div>
+      
+       <div class="overlay text-center">
+           <br>
+           <h3 class="">{{image.image_name}}</h3>
+           <hr class="text-light"> <br>
+           {% for categ in image.category.all %}
+            <h5> Category: <strong>{{ categ.category_name }} </strong> </h5>
+            {% endfor %}
+           <h5 class=""> Location: {{image.location}}</h5>
+           <br>
+           <p class="">About:  {{image.image_descriptions}}</p>
+           <h6 class="">Posted on:  {{image.post_date|date:"d, F Y"}}</h6>
+           <br>
+           <hr class="text-light">
+           <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
+               class="hidden">   
+           <br>
+           <div class="top">
+               <button type="" class="btn btn-outline-success btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
+               <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
+           </div>
+       </div>
+   </div> 
+   <br>
+</div>
+
+
+
+     {% comment %} <div class="card">
        
         <div class="card border-secondary">
           <img  class="card-img-top" src="{{image.image.url}}"  class="img-responsive" alt="">
@@ -13,9 +50,7 @@
             <h2 class="text-primary">{{image.image_name}}</h2>
             <br>
             <h4 class="">Location: {{image.location}}</h4> 
-            {% for categ in image.category.all %}
-            <h5> Category: <strong>{{ categ.category_name }} </strong>   </h5>
-            {% endfor %}
+           
             <br>
             <h6>About:  {{image.image_descriptions}}</h6>
             <h6>Time elapsed since it was posted: <br>{{image.post_date|timesince}}</h6>
@@ -23,16 +58,15 @@
             {% comment %} <br>
               <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
                             class="hidden"> 
-            <br> {% endcomment %}
+            <br> {% endcomment 
             <div class="top">
                 <button type="" class="btn btn-outline-secondary btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
                 <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>    
-                {% comment %} <button type="button" class="btn btn-outline-danger btn-lg"> <a class="btn btn-custom fs-6" rel="gallery" href="{% url 'delete_image' image.id %}">Delete Image</a></button>    {% endcomment %}
+                {% comment %} <button type="button" class="btn btn-outline-danger btn-lg"> <a class="btn btn-custom fs-6" rel="gallery" href="{% url 'delete_image' image.id %}">Delete Image</a></button>    {% endcomme
             </div>   
-        </div>
+        </div> {% endcomment %}
 
   </div>
-
 
 <script>
     function CopyFunction() {

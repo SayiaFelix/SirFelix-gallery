@@ -27,8 +27,8 @@
                 <h6 class="">Posted on:  {{image.post_date|date:"d, F Y"}}</h6>
                 <br>
                 <hr class="text-light">
-                <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
-                    class="hidden">   
+                {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
+                    class="hidden">    {% endcomment %}
                 <br>
                 <div class="top">
                     <button type="" class="btn btn-outline-success btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
@@ -39,7 +39,7 @@
         <br>
         {% endfor %} 
          <br>
-        <hr class="text-dark" > 
+   
     </div>
 </div>
 
