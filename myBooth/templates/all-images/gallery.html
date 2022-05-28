@@ -9,36 +9,65 @@
         document.execCommand("copy");
         alert("Copied the text: " + copyText.value);
     }
-</script> 
-
-<h1 class='text-center'>Gallery Booth</h1>
-  <hr> 
-<div class='container-fluid'>
-  {% for Image in Images %}
-  <hr>
+</script>  
+  <div class="container-fluid">
+   <h1 class='text-center'>Gallery Booth</h1>
+   <hr> 
     <div class="row">
+      {% for image in Images %}
+
+      <div class="row">
+        <!-- displaying News articles -->
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class="text-center"> {{ image.image_name }} </h2>
+          </div>
+      
+      </div>
+    
+      {% empty %}
+      <div class="row">
+        <h2 class="text-center">There No photo Items</h2>
+      </div>
+        {% comment %} <div class="col-md-3">
+            <img src="{{image.image.url}}" alt="" class="img-responsive" />
+
+            <div class="portfolio_images_overlay text-center">
+                <h3 class="text-white">{{image.image_name}}</h3>
+                <h5 class="text-white">Location: {{image.location}}</h5>
+                <hr>
+
+                <p class="text-white">{{image.image_descriptions}}</p>
+
+                {% comment %} <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{photo.photo.url}}"
+                    class="hidden"> {% endcomment
+                <div class="top">
+                    <button class="btn btn-success" onclick="CopyFunction()">Copy Link</button>
+
+                    <a class="fancybox btn btn-custom" rel="gallery" href="{{image.image.url}}">View Image</a>
+                </div>
+            </div>
+        </div> {% endcomment %}
+   {% comment %} <div class="row">
        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <h2 class="text-center"> {{ Image.image_name }} </h2>
-        <h5 class="text-center"> {{ Image.post_date |date:"l  d, F Y"}} </h5> 
-         {% comment %} <h5 class="text-white">Location: {{ Image.location_name }}</h5>   
-         <p class="text-white lead">{{Image.image_descriptions}}</p>  {% endcomment %}
+        <h2 class="text-center"> {{ image.image_name }} </h2>
+        <h5 class="text-center"> {{ image.post_date |date:"l  d, F Y"}} </h5> 
+          {% comment %} <h5 class="text-white">Location: {{ Image.location_name }}</h5>   
+         <p class="text-white lead">{{image.image_descriptions}}</p>   {% endcomment 
          <div class="top text-center">
                     <button class="btn btn-success" onclick="CopyFunction()">Copy Link</button>
                     <a class="fancybox btn btn-custom" rel="gallery" href="{{Image.image.url}}">View Image</a>
            </div>
-           {% comment %} <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{Image.Image.url}}"
-                    class="hidden">   {% endcomment %}
+            {% comment %} <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{Image.Image.url}}"
+                    class="hidden">    {% endcomment 
       </div> 
      
       <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <img src="{{ Image.image.url }}" class="img-responsive rounded float-start" alt="Image">
+        <img src="{{ image.image.url }}" class="img-responsive rounded float-start" alt="Image">
       </div>  
-    </div> <br>
- 
-  {% endfor %}
- 
-
-
+    </div>  {% endcomment %}
+        {% endfor %}
+    </div>
 </div>
+
 
 {% endblock %}

@@ -6,10 +6,10 @@ from .models import Image, category,Location
 # Create your views here.
 def my_gallery(request):
 
-    # Images = Image.show_all_photos()
+    Images = Image.show_all_photos()
     locations = Location.objects.all()
     date = dt.date.today()
-    Images= Image.objects.all()
+    # Images= Image.objects.all()
     return render(request, 'all-images/gallery.html', {"date": date, "Images": Images,"locations":locations})
 
 
