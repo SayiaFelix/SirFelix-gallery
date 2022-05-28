@@ -3,32 +3,35 @@
 {% block content %}
 
 <div class="container">
-    <div class="row">
-        <h1 class="text-center">{{image.image_name}}</h1>
-    </div>
-   <div class="row">
-     <img src="{{image.image.url}}"  class="img-responsive" alt="">
-   </div>
 
-   <div class="text-center">
-       <h4 class="">Location: {{image.location}}</h4>
+     <div class="card">
+       
+        <div class="card border-secondary">
+          <img  class="card-img-top" src="{{image.image.url}}"  class="img-responsive" alt="">
+        </div>
+        <div class="card-body">
+            <h2 class="text-primary">{{image.image_name}}</h2>
+            <br>
+            <h4 class="">Location: {{image.location}}</h4> 
+            {% for categ in image.category.all %}
+            <h5> Category: <strong>{{ categ.category_name }} </strong>   </h5>
+            {% endfor %}
+            <br>
+            <h6>About:  {{image.image_descriptions}}</h6>
+            <h6>Time elapsed since it was posted: <br>{{image.post_date|timesince}}</h6>
 
-       {% for categ in image.category.all %}
-       <h5> Category: <strong>{{ categ.category_name }} </strong>   </h5>
-       {% endfor %}
-       <h6>About:  {{image.image_descriptions}}</h6>
-       <h6>Time elapsed since it was posted: <br>{{image.post_date|timesince}}</h6>
+            <br>
+              <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
+                            class="hidden"> 
+            <br>
+            <div class="top">
+                <button type="" class="btn btn-outline-secondary btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
+                <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
+            </div>   
+        </div>
 
-         <br>
-           {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
-                    class="hidden">   {% endcomment %}
-        <br>
-        <div class="top">
-            <button type="" class="btn btn-outline-secondary btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
-            <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
-        </div>   
   </div>
- </div>
+
 
 <script>
     function CopyFunction() {
