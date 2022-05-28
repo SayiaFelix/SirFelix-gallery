@@ -1,35 +1,6 @@
 {% extends 'all-images/base.html' %}
 
 {% block content %}
-<script>
-    function CopyFunction() {
-        let copyText = document.getElementById("imagelink");
-        copyText.select();
-        document.execCommand("copy");
-        alert("Copied the text: " + copyText.value);
-    }
-</script>
-
-{% comment %} <div class="container-fluid">
-    <div class="row">
-        {% for image in all_images %}
-        
-        <div class="col-md-3 single_portfolio_text">
-            <img src="{{image.images.url}}" alt="" class="img-responsive" />
-
-            <div class="portfolio_images_overlay text-center">
-               
-               
-                <hr>
-
-                <p class="text-white">{{image.image_descriptions}}</p>
-
-              
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div> {% endcomment %}
 
 <div class="container">
     <div class="row">
@@ -58,4 +29,12 @@
   </div>
  </div>
 
+<script>
+    function CopyFunction() {
+        let copyText = document.getElementById("imagelink");
+        copyText.select();
+        document.execCommand("copy");
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
 {% endblock %}

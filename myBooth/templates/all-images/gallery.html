@@ -2,14 +2,7 @@
 {% block content %} 
 {{ block.super}}
 
-<script>
-    function CopyFunction() {
-        let copyText = document.getElementById("imagelink");
-        copyText.select();
-        document.execCommand("copy");
-        alert("Copied the text: " + copyText.value);
-    }
-</script>  
+
   <div class="container-fluid">
    <h1 class='text-center'>Gallery Booth</h1>
     <div class="row">
@@ -21,12 +14,8 @@
 
             <div class="portfolio_images_overlay text-center">
                 <h3 class="text-white">{{image.image_name}}</h3>
-                <h5 class="text-white">Location: {{image.post_date }}</h5>
-            
-                <p class="text-white">{{image.image_descriptions}}</p>
-
-                 {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
-                    class="hidden">  {% endcomment %}
+                  {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
+                    class="hidden">   {% endcomment %}
                     <br>
                 <div class="top">
                     <button type="" class="btn btn-secondary btn-sm"> <a class="fancybox btn btn-custom" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
@@ -38,4 +27,13 @@
         {% endfor %}
     </div>
 </div>
+
+<script>
+    function CopyFunction() {
+        let copyText = document.getElementById("imagelink");
+        copyText.select();
+        document.execCommand("copy");
+        alert("Copied the text: " + copyText.value);
+    }
+</script>  
 {% endblock %}
