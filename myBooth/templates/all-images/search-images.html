@@ -1,10 +1,6 @@
 {% extends 'all-images/base.html' %}
 {% block content %}
 
-
-<h2> Hello world</h2>
-
-
 <script>
     function CopyFunction() {
         var copyText = document.getElementById("imagelink");
@@ -15,6 +11,7 @@
 </script>
 <section id="search">
     <div class="container">
+        <h2> Hello,</h2>
         <div class="row">
             {% if Images %}
             <h2 class="text-center">
@@ -24,42 +21,31 @@
             <h2 class="text-center">Found 0 photos for the search term {{message}}</h2>
             {% endif %}
         </div>
-        {% comment %} <div class="row">
 
-            {% for photo in photos %}
-            <div class="col-md-3 single_portfolio_text">
-                <img src="{{photo.photo.url}}" alt="" class="img-responsive" />
-
-                <div class="portfolio_images_overlay text-center">
-                    <h3 class="text-white">{{photo.image_name}}</h3>
-                    <h5 class="text-white">Location: {{photo.location}}</h5>
-                    <hr>
-
-                    <p class="text-white">{{photo.image_desc}}</p>
-
-                    <input type="text" id="imagelink" class="form-control input-sm"
-                        value="https://my-memoirs.herokuapp.com{{photo.photo.url}}" class="hidden">
-                    <div class="top">
-                        <button class="btn btn-success" onclick="CopyFunction()">Copy Link</button>
-
-                        <a class="fancybox btn btn-custom" rel="gallery" href="{{photo.photo.url}}">View Image</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %} {% endcomment %}
-
-            <div class="row">
-
-                {% if Images %}
-                  {% for image in Images %}
-                    <div class="col-sm-6 col-md-3">
-                        <h1>{{image.image_name}}</h1>
-                    </div>
-                  {% endfor %}
-                {% endif %}
-                </div>
-              </div>
-        </div>
-    </div>
+        <div class="row">
+               {% for image in Images %}
+               <hr>
+               <br><br>
+                 <div class="col-md-3 single_portfolio_text">
+                     <img src="{{image.image.url}}" alt="" class="img-responsive" />
+         
+                     <div class="portfolio_images_overlay text-center">
+                         <h3 class="text-white">{{image.image_name}}</h3>
+                         <h5 class="text-white">Location: {{image.location}}</h5>
+                     
+                         <p class="text-white">{{image.image_descriptions}}</p>
+         
+                          {% comment %} <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{photo.photo.url}}"
+                             class="hidden">  {% endcomment %}
+                             <br>
+                         <div class="top">
+                             <button type="" class="btn btn-secondary btn-sm"> <a class="fancybox btn btn-custom" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
+                             <button class="btn btn-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
+                         </div>
+                     </div>
+                 </div> 
+             
+                 {% endfor %}
+             </div>
 </section>
 {% endblock %}
