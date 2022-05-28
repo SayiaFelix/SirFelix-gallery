@@ -48,6 +48,17 @@
             </div>
             {% endfor %} {% endcomment %}
 
+            <div class="row">
+
+                {% if Images %}
+                  {% for image in Images %}
+                    <div class="col-sm-6 col-md-3">
+                        <h1>{{image.image_name}}</h1>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+                </div>
+              </div>
         </div>
     </div>
 </section>
