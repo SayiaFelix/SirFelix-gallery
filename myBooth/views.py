@@ -1,4 +1,4 @@
-from email.mime import image
+
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 import datetime as dt
@@ -51,3 +51,7 @@ def get_category(request, category):
     category_result = Image.objects.filter(category__category_name = category)
     return render(request,'all-images/gallery.html',{'Images':category_result,'category_results':category_results,'location_results':location_results})
 
+def delete_image(request, image_id):
+    image=Image.objects.filter(id = image_id).delete()
+    
+    return redirect('my_gallery')

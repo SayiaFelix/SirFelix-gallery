@@ -26,7 +26,8 @@
             <br>
             <div class="top">
                 <button type="" class="btn btn-outline-secondary btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
-                <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
+                <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>    
+                <button type="button" class="btn btn-outline-danger btn-lg"> <a class="btn btn-custom fs-6" rel="gallery" href="{% url 'delete_image' image.id %}">Delete Image</a></button>   
             </div>   
         </div>
 
