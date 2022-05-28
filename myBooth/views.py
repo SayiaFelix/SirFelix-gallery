@@ -12,7 +12,6 @@ def my_gallery(request):
     return render(request, 'all-images/gallery.html', {"date": date, "Images": Images,"locations":locations})
 
 def search_results(request):
-
     if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
         searched_images = Image.search_by_name(search_term)
@@ -23,6 +22,19 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-images/search-images.html',{"message":message})
+
+def search_results(request):
+    if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_category(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-images/search-images.html',{"message":message,"Images": searched_images})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-images/search-images.html',{"message":message})
+
 
 
 def get_location(request, location_id ):

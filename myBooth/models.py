@@ -92,6 +92,13 @@ class Image(models.Model):
         Images = cls.objects.filter(image_name__icontains = search_term)
         return Images
 
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        Images = cls.objects.filter(category__category_name__icontains = search_term)
+        return Images
+
+
     @classmethod
     def search_photo_by_category(cls, category):
         '''
