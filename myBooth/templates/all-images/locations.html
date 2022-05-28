@@ -18,19 +18,13 @@
             <img src="{{image.images.url}}" alt="" class="img-responsive" />
 
             <div class="portfolio_images_overlay text-center">
-                <h3 class="text-white">{{image.image_name}}</h3>
-                <h5 class="text-white">Location: {{image.location_name}}</h5>
+               
+               
                 <hr>
 
                 <p class="text-white">{{image.image_descriptions}}</p>
 
-                {% comment %} <input type="text" id="imagelink" class="form-control input-sm" value="https://my-memoirs.herokuapp.com{{photo.photo.url}}"
-                    class="hidden"> {% endcomment 
-                <br>
-                <div class="top">
-                    <button type="" class="btn btn-secondary btn-sm"> <a class="fancybox btn btn-custom" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
-                    <button class="btn btn-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
-               </div>
+              
             </div>
         </div>
         {% endfor %}
@@ -38,23 +32,30 @@
 </div> {% endcomment %}
 
 <div class="container">
-
+    <div class="row">
+        <h1 class="text-center">{{image.image_name}}</h1>
+    </div>
    <div class="row">
      <img src="{{image.image.url}}"  class="img-responsive" alt="">
    </div>
 
-   <div class="row">
-     <h1 class="text-center">{{image.image_name}}</h1>
-   </div>
+   <div class="text-center">
+       <h2 class="">Location: {{image.location}}</h2>
+       {% for categ in image.category.all %}
+       <h5> Category:  {{ categ.category_name }} </h5>
+       {% endfor %}
+        <h6>{{image.image_descriptions}}</h6>
+       <h5>Time elapsed since it was posted: <br>{{image.post_date|timesince}}</h5>
 
-   <div class="row">
-     <p>{{image.image_descriptions}}</p>
-   </div>
-
-   <div class="row">
-     <p> {{image.post_date|timesince}}</p>
-   </div>
-
+         <br>
+           {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
+                    class="hidden">   {% endcomment %}
+        <br>
+        <div class="top">
+            <button type="" class="btn btn-secondary btn-sm"> <a class="fancybox btn btn-custom" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
+            <button class="btn btn-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
+        </div>   
+  </div>
  </div>
 
 {% endblock %}
