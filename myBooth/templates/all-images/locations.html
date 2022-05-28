@@ -11,12 +11,13 @@
    </div>
 
    <div class="text-center">
-       <h2 class="">Location: {{image.location}}</h2>
+       <h4 class="">Location: {{image.location}}</h4>
+
        {% for categ in image.category.all %}
-       <h5> Category:  {{ categ.category_name }} </h5>
+       <h5> Category: <strong>{{ categ.category_name }} </strong>   </h5>
        {% endfor %}
-        <h6>{{image.image_descriptions}}</h6>
-       <h5>Time elapsed since it was posted: <br>{{image.post_date|timesince}}</h5>
+       <h6>About:  {{image.image_descriptions}}</h6>
+       <h6>Time elapsed since it was posted: <br>{{image.post_date|timesince}}</h6>
 
          <br>
            {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
