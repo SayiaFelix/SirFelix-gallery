@@ -78,7 +78,7 @@ Admin should:
 
 ## License
 
-Copyright (c) SayiaFelix, 2022
+Copyright (c) SayiaFelix @2022
 
 ------------
 
