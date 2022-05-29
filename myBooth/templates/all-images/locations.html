@@ -5,17 +5,16 @@
 <div class="container">
 
   <div class="card-columns">
-  
 
  <br>
 
    <div class="image text-light">
-         <div class="card border-secondary">
+         <div class="card">
             <img src="{{image.image.url}}" alt="" height="500" width="400" class="img-responsive card-img-top" />
          </div>
       
        <div class="overlay text-center">
-           <br>
+        
            <h3 class="">{{image.image_name}}</h3>
            <hr class="text-light"> <br>
            {% for categ in image.category.all %}

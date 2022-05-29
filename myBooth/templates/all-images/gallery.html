@@ -7,16 +7,12 @@
     <hr class="text-dark" > 
     <div class="card-columns">
          {% for image in Images %}
-
       <br>
-     
         <div class="image text-light">
-              <div class="card border-secondary">
-                 <img src="{{image.image.url}}" alt="" height="550" width="440" class="img-responsive card-img-top" />
+              <div class="card ">
+                 <img src="{{image.image.url}}" alt="" height="490" width="" class="img-responsive card-img-top" />
               </div>
-           
             <div class="overlay text-center">
-                <br>
                 <br>
                 <h3 class="">{{image.image_name}}</h3>
                 <hr class="">
@@ -27,8 +23,8 @@
                 <h6 class="">Posted on:  {{image.post_date|date:"d, F Y"}}</h6>
                 <br>
                 <hr class="text-light">
-                {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
-                    class="hidden">    {% endcomment %}
+                 <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
+                    class="hidden">    
                 <br>
                 <div class="top">
                     <button type="" class="btn btn-outline-success btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>

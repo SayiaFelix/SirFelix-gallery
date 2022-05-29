@@ -12,10 +12,8 @@ h2 {
     box-sizing: border-box;
 }
 
-html,
 body {
-    height: 100%;
-    position: relative;
+    background-color: rgb(236, 231, 231);
 }
 
 .image {
