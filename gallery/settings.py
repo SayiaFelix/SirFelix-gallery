@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import dj_database_url
 import django_on_heroku
-from decouple import config,Csv
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -19,8 +19,8 @@ SECRET_KEY = 'nyy38e=o7js+_y0s!f*qucmgo&jhcybpj*69y!!9rjverqxh+&'
 # DEBUG = os.environ.get('DEBUG', False)
 DEBUG = False
 #
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = config('ALLOWED_HOSTS',cast=Csv())
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
