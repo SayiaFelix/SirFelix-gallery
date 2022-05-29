@@ -31,8 +31,8 @@
                 <h6 class="">Posted on:  {{image.post_date|date:"d, F Y"}}</h6>
                 <br>
                 <hr class="text-light">
-                <input type="text" id="imagelink" class="form-control input-sm text-light bg-transparent" value="https://sirfelix-gallery.herokuapp.com/{{image.image.url}}"
-                    class="hidden">    
+                <input type="text" id="imagelink" class="form-control input-sm text-light bg-transparent" value="https://sirfelix-gallery.herokuapp.com{{image.image.url}}"
+                class="hidden">    
                 <br>
                 <div class="top">
                     <button type="" class="btn btn-outline-primary "> <a class="btn btn-custom btn-sm fs-5 text-light" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
