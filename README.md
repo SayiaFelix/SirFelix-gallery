@@ -2,7 +2,7 @@
 
 ![SirFelix-gallery](/media/images/booth.png)
 
-## Built By [T](https://github.com/SayiaFelix/)
+## Built By [SayiaFelix](https://github.com/SayiaFelix/)
 
 ## Description
 This application allows users to view photos which i have posted and the user is able to search photos by category i.e (Studies,Studio Session,Vacation,Hike,Fun and Travel).The user will view image details and location by hovering on the photo and the admin is the only one responsible for uploading, editing or deleting photos.
