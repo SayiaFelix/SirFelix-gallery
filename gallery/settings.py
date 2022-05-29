@@ -13,11 +13,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'nyy38e=o7js+_y0s!f*qucmgo&jhcybpj*69y!!9rjverqxh+&'
-MODE=config("MODE", default='dev')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG', False)
 DEBUG = False
-##
 ALLOWED_HOSTS = []
 
 
@@ -70,28 +69,14 @@ WSGI_APPLICATION = 'gallery.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if config('MODE') == 'dev':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'HOST': config('DB_HOST'),
-            'PORT': '',
-
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cher',
+        'USER': 'moringa',
+        'PASSWORD': 'jay',
     }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
-    }
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
+}
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
