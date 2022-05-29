@@ -13,11 +13,13 @@
                  <img src="{{image.image.url}}" alt="" height="490" width="" class="img-responsive card-img-top" />
               </div>
             <div class="overlay text-center">
-                <h3 class="">{{image.image_name}}</h3>
-                <hr class="">
-                <br>
+                <h3 class="fw-bold">{{image.image_name}}</h3>
+                <hr class="text-light">
+                
                 <h5 class=""> Location: {{image.location}}</h5>
-                <br>
+                {% for categ in image.category.all %}
+                <h5> Category: <strong>{{ categ.category_name }} </strong> </h5>
+                {% endfor %}
                 <p class="">About:  {{image.image_descriptions}}</p>
                 <h6 class="">Posted on:  <em> {{image.post_date|date:"d, F Y"}}</em></h6>
                 <br>
