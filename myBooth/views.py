@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http  import Http404
 import datetime as dt
-from .models import Image,Location
+from .models import Image,Location, category
 
 # Create your views here.
 def my_gallery(request):
@@ -24,12 +24,18 @@ def search_results(request):
         return render(request, 'all-images/search-images.html',{"message":message})
 
 
-def get_location(request, location_id ):
-    try:
-        image = Image.objects.get(id= location_id )
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"all-images/locations.html", {"image":image})
+# def get_location(request, location_id ):
+#     try:
+#         image = Image.objects.get(id= location_id )
+#     except DoesNotExist:
+#         raise Http404()
+#     return render(request,"all-images/locations.html", {"image":image})
+
+def get_location(request, location_name):
+    category_results = category.objects.all()
+    locations = Location.objects.all()
+    location_result = Image.objects.filter(location__id= location_name)
+    return render(request,'all-images/locations.html',{'images':location_result,'category_results':category_results,'locations':locations})
 
 def delete_image(request, image_id):
     image=Image.objects.filter(id = image_id).delete()
