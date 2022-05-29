@@ -1,7 +1,7 @@
 {% extends 'all-images/base.html' %}
 {% block content %}
 
-
+<hr class="text-dark"> 
 <div class="container">
     <div class="row">
         {% if Images %}
@@ -18,57 +18,35 @@
          {% for image in Images %}
         <br>
         <div class="image text-light">
-              <div class="card">
+              <div class="">
                  <img src="{{image.image.url}}" alt="" height="500" width="420" class="img-responsive card-img-top" />
               </div>
             <div class="overlay text-center">
                 <br>
                 <h3 class="">{{image.image_name}}</h3>
-                <hr class="">
-                <br>
+                <hr>
                 <h5 class=""> Location: {{image.location}}</h5>
                 <br>
                 <p class="">About:  {{image.image_descriptions}}</p>
                 <h6 class="">Posted on:  {{image.post_date|date:"d, F Y"}}</h6>
                 <br>
                 <hr class="text-light">
-                <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{image.image.url}}"
-                    class="hidden">   
+                <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://sirfelix-gallery.herokuapp.com{{image.image.url}}"
+                    class="hidden">  
                 <br>
                 <div class="top">
-                    <button type="" class="btn btn-outline-success btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
-                    <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
+                    <button type="" class="btn btn-outline-primary "> <a class="btn btn-custom btn-sm fs-5 text-light" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
+                    <button class="btn btn-outline-primary btn-lg text-light" onclick="CopyFunction()">Copy Link</button>       
                 </div>
             </div>
         </div> 
         <br>
         {% endfor %} 
-         <br>
     </div>
-        
-
-
-
-
-        {% comment %} <div class="col-md-3">
-            <h1 class='text-center'>{{image.image_name}}</h1> 
-                <img src="{{image.image.url}}" alt="" class="img-responsive" />
-                <p class="text-white">{{image.image_descriptions}}</p>
-            <h5 class="text-white">Location: {{image.location}}</h5>
-
-                {% comment %} <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://my-memoirs.herokuapp.com{{photo.photo.url}}"
-                                class="hidden">   {% endcomment
-                        <br>
-                        <div class="top">
-                            <button type="" class="btn btn-outline-secondary btn-sm"> <a class="btn btn-custom fs-6" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
-                            <button class="btn btn-outline-primary btn-lg" onclick="CopyFunction()">Copy Link</button>       
-                        </div>
-        </div> {% endcomment %}
-    
     {% endif %}
-    </div>
 </div>
-
+<hr class="text-dark"> 
+<br>
 <script>
     function CopyFunction() {
         let copyText = document.getElementById("imagelink");
