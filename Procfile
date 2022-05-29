@@ -1,1 +1,1 @@
-web: gunicorn gallery.wsgi --preload 
+web: gunicorn gallery.wsgi
