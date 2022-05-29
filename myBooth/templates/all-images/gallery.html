@@ -19,10 +19,10 @@
                 <h5 class=""> Location: {{image.location}}</h5>
                 <br>
                 <p class="">About:  {{image.image_descriptions}}</p>
-                <h6 class="">Posted on:  {{image.post_date|date:"d, F Y"}}</h6>
+                <h6 class="">Posted on:  <em> {{image.post_date|date:"d, F Y"}}</em></h6>
                 <br>
                 <hr class="text-light">
-                 <input type="text" id="imagelink" class="form-control input-sm text-center" value="https://sirfelix-gallery.herokuapp.com{{image.image.url}}"
+                 <input type="text" id="imagelink" class="form-control input-sm text-light bg-transparent" value="https://sirfelix-gallery.herokuapp.com{{image.image.url}}"
                     class="hidden">    
                 <br>
                 <div class="top">

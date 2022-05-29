@@ -9,34 +9,33 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'my_gallery' %}">Home</a>
                 </li>   
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link" href="/admin">Admin</a>
-                </li> 
+                </li>  {% endcomment %}
                  <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {% for location in locations %}
                         <li><a class="dropdown-item" href="{% url 'get_location' location.id %}">{{location.location_name}}</a></li>
                         <li><hr class="dropdown-divider"></li>
-
                         {% endfor %}
                     </ul>
                 </li> 
             </ul> 
              <!-- Search Form -->
              <div class="col-sm-4 col-md-4 navbar-right">
-              <form action="{% url 'search_results' %}" class="navbar-form" role="search">
-                {% csrf_token %}
-                  <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search Photo by Category" name="image">
-                      <div class="input-group-btn">
-                          <button class="btn btn-outline-primary" type="submit">Search
-                              <i class="glyphicon glyphicon-search"></i>
-                          </button>
-                      </div>
-                  </div>
-              </form>
+                <form action="{% url 'search_results' %}" class="navbar-form" role="search">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Photo by Category" name="image">
+                        <div class="input-group-btn">
+                            <button class="btn btn-outline-primary" type="submit">Search
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
              </div> 
-      </div>
+       </div>
     </div>
   </nav> 
