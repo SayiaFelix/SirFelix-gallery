@@ -22,21 +22,22 @@
               </div>
             <div class="overlay text-center">
                 <h3 class="fw-bold">{{image.image_name}}</h3>
-                <hr> <br>
+                <hr class="text-light">
+                
                 <h5 class=""> Location: {{image.location}}</h5>
                 {% for categ in image.category.all %}
-                <h5> Category: <strong>{{ categ.category_name }} </strong> </h5>
+                <h5> <strong> Category:</strong>  {{categ.category_name }}</h5>
                 {% endfor %}
-                <p class="">About:  {{image.image_descriptions}}</p>
-                <h6 class="">Posted on:  {{image.post_date|date:"d, F Y"}}</h6>
                 <br>
+                <p class=""> <b>Abouts:</b> <br> {{image.image_descriptions}}</p>
+                <h6 class="">Posted on:  <em> {{image.post_date|date:"d, F Y"}}</em></h6>
                 <hr class="text-light">
                 <input type="text" id="imagelink" class="form-control input-sm text-light bg-transparent" value="https://sirfelix-gallery.herokuapp.com{{image.image.url}}"
                 class="hidden">    
                 <br>
                 <div class="top">
-                    <button type="" class="btn btn-outline-primary "> <a class="btn btn-custom btn-sm fs-5 text-light" rel="gallery" href="{{image.image.url}}">Zoom Image</a> </button>
-                    <button class="btn btn-outline-primary btn-lg text-light" onclick="CopyFunction()">Copy Link</button>       
+                    <button type="" class="btn btn-outline-transparent"> <a class="btn btn-custom btn-sm fs-3 text-primary fw-bold" rel="gallery" href="{{image.image.url}}">View</a> </button>
+                    <button class="btn btn-outline-transparent btn-lg text-primary fs-3 fw-bold" onclick="CopyFunction()">Link</button>       
                 </div>
             </div>
             <br>
