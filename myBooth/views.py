@@ -4,6 +4,8 @@ import datetime as dt
 from .models import Image,Location, category
 
 # Create your views here.
+def main(request):
+      return render(request, 'all-images/main.html')
 def my_gallery(request):
     Images = Image.show_all_photos() # Show all photos in oder of date posted
     locations = Location.objects.all()
