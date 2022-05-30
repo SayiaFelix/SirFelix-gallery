@@ -1,6 +1,6 @@
 # SirFelix-gallery
 
-![SirFelix-gallery](/media/images/booth.png)
+![SirFelix-gallery](/media/images/boot.png)
 
 ## Author : [SayiaFelix](https://github.com/SayiaFelix/)
 
